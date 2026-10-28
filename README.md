@@ -131,6 +131,14 @@ segurança × faturamento × dívida). "Porque é mais seguro" não é justifica
 
 **Placar do grupo após esta decisão:** 🔥 9 · 💰 R$ 70 mil · 🧹 -1
 
+## RODADA 5: A fábrica que devolve null (01h30)
+
+**Tipo:** rodada · **Voto:** A
+
+**Justificativa:** A `ContaFactory` retornava `null` para tipos de conta não reconhecidos, fazendo o erro aparecer apenas na camada de persistência. Optamos pelo princípio Fail-fast, lançando uma exceção clara diretamente na Factory para identificar a causa do problema e evitar a propagação de valores nulos. Embora essa abordagem não implemente automaticamente o suporte à Conta Universitária, ela centraliza a validação e facilita a manutenção do sistema.
+
+**Placar do grupo após esta decisão:** 🔥 8 · 💰 R$ 70 mil · 🧹 -1
+
 ---
 
 ## 🔎 O caminho do MEU grupo (preencher na 3ª aula, quando o mapa for revelado)
