@@ -20,33 +20,6 @@
 | Fernando Antônio|565363 |
 |Victor Chen |562549 |
 
-## 0. Setup do repositório (antes da 1ª aula; podem apagar esta seção depois)
-
-1. Um integrante cria o repo **público** no GitHub: `cp6-warroom-<nome-do-grupo>`
-   (ex.: `cp6-warroom-debugadores`), com um README qualquer
-2. Substituam o conteúdo do `README.md` por este template (no navegador, pelo próprio
-   GitHub, ou clonando):
-   ```bash
-   git clone https://github.com/<conta>/cp6-warroom-<nome-do-grupo>.git
-   cd cp6-warroom-<nome-do-grupo>
-   # substitua o conteúdo do README.md por este template e:
-   git add .
-   git commit -m "chore: ficha em branco do grupo"
-   git push
-   ```
-3. Postem o **link no Teams** (o mesmo link para todo o grupo)
-
-**Convenção de commits** (1 commit por rodada; relâmpagos podem ir junto com a
-rodada seguinte):
-
-```
-decisao: R1 - opcao C (<resumo da justificativa em uma frase>)
-decisao: R2 - opcao A (<resumo em uma frase>)
-pos-mortem: relatorio de incidente da madrugada
-```
-
----
-
 ## 📁 Dossiê técnico do FiapBank (MVP em produção)
 
 **Stack:** Java 17 + Spring Boot + Spring Data JPA + Oracle. API com endpoints em
@@ -289,4 +262,4 @@ Também aprendemos que decisões tecnicamente adequadas podem ser incompletas se
 
 Encerramos a simulação com o perfil **A Noite dos Heróis**, reconhecendo que nossa principal responsabilidade como equipe de desenvolvimento é construir sistemas seguros, testáveis e confiáveis.
 
-**Uma palavra que resume nossa madrugada: CONFIABILIDADE.**____________
+**Uma palavra que resume nossa madrugada: CONFIABILIDADE.
