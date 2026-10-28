@@ -115,6 +115,13 @@ segurança × faturamento × dívida). "Porque é mais seguro" não é justifica
 
 **Placar do grupo após esta decisão:** 🔥 8 · 💰 R$ 35 mil · 🧹 0
 
+## RODADA 3: A noite das contas gêmeas (22h50)
+
+**Tipo:** rodada · **Voto:** D
+
+**Justificativa:** O método `getInstancia()` criava uma nova instância do gerador a cada chamada, violando o padrão Singleton e permitindo números de conta duplicados. Optamos por delegar a geração dos identificadores a uma `SEQUENCE` do banco Oracle, garantindo unicidade mesmo com múltiplas instâncias da aplicação. Embora a migração exija aproximadamente 1 hora, essa abordagem oferece maior robustez e preserva a regra de negócio.
+
+**Placar do grupo após esta decisão:** 🔥 8 · 💰 R$ 45 mil · 🧹 0
 
 ---
 
