@@ -172,11 +172,24 @@ Uma linha por decisão registrada acima (usem os títulos ditados em aula):
 
 | # | Decisão | Nossa letra | Consequência que ELA teria tido |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
+| 1 | R1 — O saldo que virou negativo | C | Corrigimos o tratamento da exceção e adicionamos um teste com `assertThrows`. A solução demorou mais, afetando oito clientes e gerando R$ 35 mil de prejuízo, mas reduziu a dívida técnica. |
+| 2 | R2 — A injeção que derreteu o banco | D | Utilizamos a consulta derivada `findByTitular` do Spring Data JPA, eliminando a concatenação insegura de SQL e reduzindo a dívida técnica. |
+| 3 | R3 — A noite das contas gêmeas | D | Delegamos a geração dos números de conta a uma `SEQUENCE` do Oracle, garantindo unicidade na geração. A migração levou aproximadamente uma hora e gerou R$ 10 mil de prejuízo. |
+| 4 | R4 — O comprovante que aponta pra pessoa errada | B | Corrigimos a gravação e reprocessamos os extratos antigos, restaurando a integridade dos registros. O processo gerou R$ 25 mil de prejuízo e reduziu a dívida técnica. |
+| 5 | R5 — A fábrica que devolve null | A | Aplicamos Fail-fast na Factory, substituindo o retorno `null` por uma exceção clara. A reputação caiu um ponto, mas o erro passou a ser identificado próximo à sua origem. |
+| 6 | Relâmpago C — O cadastro com metade dos campos | B | Escolhemos o padrão Builder para centralizar valores padrão e validações, evitando construtores sobrecarregados e sem aumentar a dívida técnica. |
+| 7 | R6 — O teste vermelho às 03h45 | B | Investigamos a divergência da taxa TED, preservando o teste correto. Perdemos a janela de deploy, gerando R$ 30 mil de prejuízo, mas identificamos a cobrança incorreta. |
+| 8 | R7 — Go/No-Go da Black Friday | B | Decidimos corrigir os problemas e abrir a campanha duas horas depois, com a suíte saudável. A decisão gerou R$ 100 mil de prejuízo adicional, mas aumentou a reputação e reduziu a dívida técnica. |
 
-*(adicionem linhas conforme as decisões da madrugada)*
+### Placar final da equipe
+
+- **Reputação:** 🔥 8
+- **Prejuízo acumulado:** 💰 R$ 200 mil
+- **Dívida técnica:** 🧹 -3
+- **Estado da suíte:** Saudável
+- **Perfil final:** A Noite dos Heróis
+
+O grupo encerrou a madrugada com reputação elevada e dívida técnica reduzida. Embora as decisões tenham gerado prejuízos imediatos, priorizamos a integridade dos dados, a segurança das operações e a confiabilidade do sistema para a Black Friday.
 
 ---
 
