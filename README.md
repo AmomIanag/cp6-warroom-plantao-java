@@ -156,6 +156,14 @@ segurança × faturamento × dívida). "Porque é mais seguro" não é justifica
 
 **Placar do grupo após esta decisão:** 🔥 7 · 💰 R$ 100 mil · 🧹 -2
 
+## RODADA 7: Go/No-Go da Black Friday (06h15)
+
+**Tipo:** rodada · **Voto:** B
+
+**Justificativa:** Os incidentes da madrugada evidenciaram a concentração excessiva de responsabilidades no `TransferenciaService`, indicando baixa coesão e possíveis violações do Princípio da Responsabilidade Única (SRP). Optamos por corrigir os problemas identificados e validar as alterações com a suíte de testes antes da abertura da campanha. Embora essa decisão atrase o lançamento em duas horas e aumente o prejuízo imediato, ela prioriza a estabilidade, a confiabilidade das operações bancárias e a redução da dívida técnica.
+
+**Placar do grupo após esta decisão:** 🔥 8 · 💰 R$ 200 mil · 🧹 -3
+
 ---
 
 ## 🔎 O caminho do MEU grupo (preencher na 3ª aula, quando o mapa for revelado)
