@@ -123,6 +123,14 @@ segurança × faturamento × dívida). "Porque é mais seguro" não é justifica
 
 **Placar do grupo após esta decisão:** 🔥 8 · 💰 R$ 45 mil · 🧹 0
 
+## RODADA 4: O comprovante que aponta pra pessoa errada (00h47)
+
+**Tipo:** rodada · **Voto:** B
+
+**Justificativa:** A entidade `Transferencia` estava sendo instanciada com os números de origem e destino invertidos, comprometendo a integridade dos registros persistidos. Optamos por corrigir a gravação e reprocessar os extratos antigos para restaurar a consistência dos dados e permitir auditorias confiáveis. Embora o reprocessamento leve aproximadamente duas horas e aumente o prejuízo imediato, ele evita manter informações incorretas no histórico e reduz a dívida técnica.
+
+**Placar do grupo após esta decisão:** 🔥 9 · 💰 R$ 70 mil · 🧹 -1
+
 ---
 
 ## 🔎 O caminho do MEU grupo (preencher na 3ª aula, quando o mapa for revelado)
