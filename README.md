@@ -106,6 +106,16 @@ segurança × faturamento × dívida). "Porque é mais seguro" não é justifica
 
 **Placar do grupo após esta decisão:** 🔥 8 · 💰 R$ 35 mil · 🧹 1
 
+
+## RODADA 2: A injeção que derreteu o banco (21h02)
+
+**Tipo:** rodada · **Voto:** D
+
+**Justificativa:** A consulta JDBC concatenava diretamente a entrada do usuário ao SQL, permitindo ataques de SQL Injection. Optamos por utilizar o método `findByTitular` do Spring Data JPA, que realiza consultas com parâmetros vinculados e elimina a concatenação insegura. Embora essa solução leve cerca de 50 minutos, sendo mais demorada que o `PreparedStatement`, ela aproveita o repositório existente e reduz a dívida técnica.
+
+**Placar do grupo após esta decisão:** 🔥 8 · 💰 R$ 35 mil · 🧹 0
+
+
 ---
 
 ## 🔎 O caminho do MEU grupo (preencher na 3ª aula, quando o mapa for revelado)
