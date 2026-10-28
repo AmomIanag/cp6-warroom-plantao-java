@@ -8,19 +8,17 @@
 > **Os incidentes da madrugada são revelados só em aula.** O título de cada registro
 > será **ditado pelo professor na hora**; ninguém se antecipe.
 
-**Grupo (nome da equipe plantonista):** ______________________________________
+**Grupo (nome da equipe plantonista):** Plantão Java
 
-**Turma:** ____________ **Repo:** `cp6-warroom-____________________`
+**Turma:** 2CCPH | **Repo:** `cp6-warroom-plantao-java`
 
 **Integrantes (nome + RM):**
 
 | Nome | RM |
 |---|---|
-| | |
-| | |
-| | |
-| | |
-| | |
+| Amom Ianaguivara Brito|565718 |
+| Fernando Antônio|565363 |
+|Victor Chen |562549 |
 
 ## 0. Setup do repositório (antes da 1ª aula; podem apagar esta seção depois)
 
