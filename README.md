@@ -148,6 +148,13 @@ segurança × faturamento × dívida). "Porque é mais seguro" não é justifica
 
 **Placar do grupo após esta decisão:** 🔥 8 · 💰 R$ 70 mil · 🧹 -1
 
+## RODADA 6: O teste vermelho às 03h45
+
+**Tipo:** rodada · **Voto:** B
+
+**Justificativa:** O teste JUnit identificou uma divergência entre a taxa TED implementada no serviço (R$ 50,00) e a regra de negócio estabelecida no contrato (R$ 5,00). Optamos por investigar a falha e preservar a validação com `assertEquals`, em vez de desabilitar ou modificar o teste para mascarar o erro. Embora essa decisão nos faça perder a janela de deploy e aumente o prejuízo imediato, ela permite identificar a causa real e evita comprometer a confiabilidade da suíte de testes.
+
+**Placar do grupo após esta decisão:** 🔥 7 · 💰 R$ 100 mil · 🧹 -2
 
 ---
 
