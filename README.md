@@ -139,6 +139,16 @@ segurança × faturamento × dívida). "Porque é mais seguro" não é justifica
 
 **Placar do grupo após esta decisão:** 🔥 8 · 💰 R$ 70 mil · 🧹 -1
 
+
+## EVENTO RELÂMPAGO C: O cadastro com metade dos campos (02h20)
+
+**Tipo:** relâmpago · **Voto:** B
+
+**Justificativa:** O cadastro simplificado exigia criar objetos com menos campos, enquanto o construtor atual obrigava o preenchimento de todos os atributos. Optamos pelo padrão Builder, que centraliza valores padrão e validações no método `build()`, evitando o crescimento de construtores sobrecarregados. Embora exija uma estrutura inicial mais elaborada, essa abordagem melhora a manutenção e reduz a propagação de valores nulos.
+
+**Placar do grupo após esta decisão:** 🔥 8 · 💰 R$ 70 mil · 🧹 -1
+
+
 ---
 
 ## 🔎 O caminho do MEU grupo (preencher na 3ª aula, quando o mapa for revelado)
