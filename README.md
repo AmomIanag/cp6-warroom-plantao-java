@@ -193,38 +193,100 @@ O grupo encerrou a madrugada com reputação elevada e dívida técnica reduzida
 
 ---
 
-# 📋 PÓS-MORTEM · relatório de incidente (montar em sala na 3ª aula)
+# 📋 PÓS-MORTEM · Relatório de Incidente
 
-> Rascunho em aula e commit final `pos-mortem:` até 23h59 do dia da 3ª aula.
+**Equipe:** Plantão Java  
+**Turma:** 2CCPH  
+**Sistema:** FiapBank — Black Friday  
+**Tecnologias envolvidas:** Java 17, Spring Boot, Spring Data JPA, Oracle e JUnit.
+
+**Placar final da simulação:** 🔥 8 · 💰 R$ 200 mil · 🧹 -3  
+**Estado da suíte:** Saudável  
+**Perfil final:** A Noite dos Heróis
 
 ## 1. Linha do tempo da madrugada
 
-_______________________________________________________________________________________
+Durante o plantão simulado, nossa equipe enfrentou incidentes relacionados ao tratamento de exceções, segurança das consultas, persistência, padrões de projeto e testes automatizados.
 
-_______________________________________________________________________________________
+| Horário | Incidente | Decisão e consequência |
+|---|---|---|
+| 19h12 | R1 — O saldo que virou negativo | **C:** Corrigir a exceção ignorada e adicionar um teste com `assertThrows`. Oito clientes foram afetados, com R$ 35 mil de prejuízo, mas reduzimos o risco de regressão. |
+| 21h02 | R2 — A injeção que derreteu o banco | **D:** Utilizar a consulta derivada do Spring Data JPA, eliminando a concatenação insegura de SQL e reduzindo a dívida técnica. |
+| 22h50 | R3 — A noite das contas gêmeas | **D:** Delegar a geração dos números de conta a uma `SEQUENCE` do Oracle. A migração gerou R$ 10 mil de prejuízo. |
+| 00h47 | R4 — O comprovante que aponta pra pessoa errada | **B:** Corrigir a gravação e reprocessar os extratos anteriores, restaurando a integridade dos registros ao custo de R$ 25 mil. |
+| 01h30 | R5 — A fábrica que devolve null | **A:** Aplicar Fail-fast na Factory, substituindo o retorno nulo por uma exceção clara. A reputação caiu um ponto. |
+| 02h20 | Relâmpago C — O cadastro com metade dos campos | **B:** Utilizar Builder para centralizar valores padrão e validações, sem aumentar a dívida técnica. |
+| 03h45 | R6 — O teste vermelho | **B:** Investigar a divergência entre a taxa TED de R$ 5 prevista em contrato e os R$ 50 implementados. A investigação custou a janela de deploy e R$ 30 mil. |
+| 06h15 | R7 — Go/No-Go da Black Friday | **B:** Corrigir os problemas identificados, validar a suíte e abrir a campanha às 10h, duas horas depois do previsto, com prejuízo adicional de R$ 100 mil. |
 
-_______________________________________________________________________________________
+Os eventos relâmpago A, B, D e E não se aplicaram ao caminho escolhido pela equipe.
+
+Ao final da madrugada, o grupo acumulou R$ 200 mil de prejuízo, reputação 8 e dívida técnica -3, de acordo com as consequências da simulação. O perfil alcançado foi **A Noite dos Heróis**.
 
 ## 2. Causa raiz de 2 incidentes (aula + mecanismo técnico)
 
-**Incidente 1:** _______________________________________________
+### Incidente 1: R1 — O saldo que virou negativo
 
-Aula/mecanismo:
+**Aula 11 — Tratamento de exceções**
 
-_______________________________________________________________________________________
+A causa raiz foi a captura indevida da `SaldoInsuficienteException` dentro do próprio método de transferência. Embora a exceção fosse lançada quando o saldo era insuficiente, o bloco `catch` a ignorava, permitindo que o método continuasse executando o débito.
 
-**Incidente 2:** _______________________________________________
+Esse comportamento violava a regra de negócio que proíbe saldos negativos.
 
-Aula/mecanismo:
+A decisão foi corrigir o tratamento da exceção e adicionar um teste com `assertThrows`, verificando que transferências sem saldo suficiente devem ser recusadas.
 
-_______________________________________________________________________________________
+A principal lição foi que lançar uma exceção não garante a proteção de uma regra de negócio quando seu tratamento permite que a execução continue incorretamente.
+
+### Incidente 2: R6 — O teste vermelho às 03h45
+
+**Aula 15 — Testes unitários e validação de regras de negócio**
+
+A causa raiz foi a implementação incorreta da taxa TED no serviço de transferências. Enquanto o contrato estabelecia uma cobrança fixa de R$ 5,00, o código utilizava o valor de R$ 50,00, definido diretamente no serviço.
+
+O teste JUnit identificou corretamente a divergência por meio de `assertEquals`, comparando o resultado esperado com o valor efetivamente calculado.
+
+A equipe decidiu investigar a falha, mesmo perdendo a janela de deploy. Desabilitar o teste com `@Disabled` ou modificar seu valor esperado apenas esconderia o defeito.
+
+Como prevenção, recomendamos substituir valores numéricos isolados por constantes de negócio e manter testes automatizados que validem as taxas previstas no contrato.
+
+A principal lição foi que uma suíte de testes confiável deve verificar as regras de negócio, e não simplesmente confirmar o comportamento atual do código.
 
 ## 3. O que faríamos diferente (2 rodadas + por quê)
 
-_______________________________________________________________________________________
+### Rodada 3 — A noite das contas gêmeas
 
-_______________________________________________________________________________________
+**Decisão original:** D — Delegar a numeração ao banco de dados.
+
+Embora a utilização de uma `SEQUENCE` no Oracle seja uma solução robusta para gerar identificadores únicos, nossa abordagem poderia ter considerado melhor a recuperação dos registros já afetados.
+
+Em uma situação real, combinaríamos a migração com uma auditoria das contas duplicadas, identificando os clientes impactados e corrigindo eventuais inconsistências nos dados existentes.
+
+Também avaliaríamos uma contenção imediata para impedir novas duplicações enquanto a migração definitiva estivesse em andamento.
+
+Isso permitiria tratar tanto a causa do incidente quanto os danos produzidos antes da correção.
+
+### Rodada 5 — A fábrica que devolve null
+
+**Decisão original:** A — Aplicar Fail-fast na Factory.
+
+A escolha melhorou o diagnóstico dos erros, pois substituiu o retorno `null` por uma exceção clara. Entretanto, ela não resolveu completamente a necessidade do negócio: permitir a abertura de contas universitárias.
+
+Em uma implementação real, complementaríamos a correção adicionando suporte explícito ao tipo `UNIVERSITARIA` na Factory, juntamente com testes unitários e de integração para validar a criação e a persistência da nova conta.
+
+Dessa forma, além de evitar erros silenciosos, garantiríamos que a funcionalidade prometida aos clientes estivesse disponível e funcionando corretamente.
+
+A reflexão mostrou que corrigir o tratamento de um erro não significa necessariamente resolver a necessidade que originou o incidente.
 
 ## 4. A maior lição da equipe
 
-_______________________________________________________________________________________
+A principal lição do Plantão Java foi que **a estabilidade de um sistema depende de decisões técnicas fundamentadas, e não apenas da velocidade das correções**.
+
+Durante a madrugada, percebemos como problemas aparentemente pequenos, como uma exceção ignorada, uma consulta SQL concatenada ou um teste desabilitado, podem comprometer a segurança, a integridade dos dados e a confiança dos clientes.
+
+Nossas escolhas priorizaram o tratamento das causas, a confiabilidade dos testes e a redução da dívida técnica, mesmo quando isso representou atrasos e prejuízos imediatos.
+
+Também aprendemos que decisões tecnicamente adequadas podem ser incompletas se não considerarem os dados já afetados e as necessidades do negócio.
+
+Encerramos a simulação com o perfil **A Noite dos Heróis**, reconhecendo que nossa principal responsabilidade como equipe de desenvolvimento é construir sistemas seguros, testáveis e confiáveis.
+
+**Uma palavra que resume nossa madrugada: CONFIABILIDADE.**____________
