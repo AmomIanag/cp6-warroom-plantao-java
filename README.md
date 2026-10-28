@@ -98,6 +98,14 @@ segurança × faturamento × dívida). "Porque é mais seguro" não é justifica
 *(as decisões entram aqui, na ordem em que a madrugada as trouxer; placar inicial:
 🔥 7 · 💰 0 · 🧹 2)*
 
+## RODADA 1: O saldo que virou negativo (19h12)
+
+**Tipo:** rodada · **Voto:** C
+
+**Justificativa:** A exceção `SaldoInsuficienteException` estava sendo capturada e ignorada pelo bloco `catch`, permitindo que a transferência fosse realizada mesmo sem saldo suficiente. Decidimos corrigir o tratamento da exceção e adicionar um teste com `assertThrows` para impedir regressões. Embora essa abordagem aumente o tempo de correção e o prejuízo imediato, ela protege a regra de negócio e reduz a dívida técnica.
+
+**Placar do grupo após esta decisão:** 🔥 8 · 💰 R$ 35 mil · 🧹 1
+
 ---
 
 ## 🔎 O caminho do MEU grupo (preencher na 3ª aula, quando o mapa for revelado)
